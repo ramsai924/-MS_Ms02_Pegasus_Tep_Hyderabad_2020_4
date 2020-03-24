@@ -25,35 +25,35 @@ There are two main techniques one can use to solve a Sudoku puzzle; Crosshatchin
 It is important to understand that all Sudoku puzzles require an iterative approach. Except for in the case of the most simple puzzles, players will have to visit each nonet more than one time. Fortunately, each successive application of the solution techniques yields more completed cells.
 
 # Learning concepts
-Objects in JS
+### Objects in JS
 - Significance of key-value pairs
 - primitives vs objects
 - array vs object
 - Nested data structures and 2D arrays
-Introduction to functions
+### Introduction to functions
 - return
 - Arguments vs parameters
 - function call vs function definition
-Scope of a variable: functions
+### Scope of a variable: functions
 - Hoisting
 - Block scoping vs IIFE
 - Named vs anonymous functions
-Higer order functions
+### Higer order functions
 - Callbacks
 - Closures
-Asynchronous programming
+### Asynchronous programming
 - synchronous vs async
 - Events & event loop
 - Timers: setTimeout and setInterval
-Effective Debugging
+### Effective Debugging
 - How errors work?
 - Understanding the program flow
-Debugging in JS
+### Debugging in JS
 - Common javascript errors
 - Catch and throw errors
 - Chrome debugger tool
-Regular Expressions
+### Regular Expressions
 - Basic syntax
 - Significance of RegEx
-Pair programming: how & why
-How to use stackoverflow, MDN and other docs
+### Pair programming: how & why
+### How to use stackoverflow, MDN and other docs
