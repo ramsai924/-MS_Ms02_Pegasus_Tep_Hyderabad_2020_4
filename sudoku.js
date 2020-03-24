@@ -31,16 +31,16 @@ var arr = [
 	            var y0 = Math.floor((y/3) * 3);
 
 	            for(let k=0;k<3;k++){
-			                for(let l=0;l<3;l++){
-						                if(arr[x0 + k][y0 + l] === n){
+			         for(let l=0;l<3;l++){
+						   if(arr[x0 + k][y0 + l] === n){
 									                  
-									                   return false;
+                                                         return false;
 									                    
-									                }else{
-					                                                    return true;
-											}
-						            }
-			            }
+	                                           }else{
+					                  return true;
+							}
+			                }
+			    }
 	            
 	        }
 
@@ -49,23 +49,28 @@ var arr = [
 function create(){
 
 	for(let i=0;i<arr.length;i++){
-		    for(let j=0;j<arr.length;j++){
-			            if(arr[i][j] === 0){
-					                for(let n=1;n<10;n++){
-								                if(solve(i,j,n)){
-											              arr[i][j] = n;
-											              return create();
 
-											                }
-								                else{
+	    for(let j=0;j<arr.length;j++){
 
-											               arr[i][j] = 0;
+	             if(arr[i][j] === 0){
+
+			  for(let n=1;n<10;n++){
+
+			                if(solve(i,j,n)){
+
+							arr[i][j] = n;
+			                                return create();
+
+	                                                 }
+						         else{
+
+			                                  arr[i][j] = 0;
 											                   
-											                    }
+			                                    }
 								               
-								            }
-					            }
-			        }
+					        }
+				        }
+			    }
         	}
      
 }
