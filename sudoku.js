@@ -1,81 +1,61 @@
-
-var arr = [
-	    
-	    [5,3,0,0,7,0,0,0,0],
-	    [6,0,0,1,9,5,0,0,0],
-	    [0,9,8,0,0,0,0,6,0],
-	    [8,0,0,0,6,0,0,0,3],
-	    [4,0,0,8,0,3,0,0,1],
-	    [7,0,0,0,2,0,0,0,6],
-	    [0,6,0,0,0,0,2,8,0],
-	    [0,0,0,4,1,9,0,0,5],
-	    [0,0,0,8,0,0,0,7,9]
-
-	    ]; 
-
-    function solve(y,x,n){
-
-	            for(let i=0;i<9;i++){
-			                if(arr[y][i] === n){
-						                return false;
-						            }
-			            }
-
-	            for(let j=0;j<9;j++){
-			                if(arr[j][x] === n){
-						                return false;
-						            }
-			            }
-
-	            var x0 = Math.floor((x/3) * 3); 
-	            var y0 = Math.floor((y/3) * 3);
-
-	            for(let k=0;k<3;k++){
-			         for(let l=0;l<3;l++){
-						   if(arr[x0 + k][y0 + l] === n){
-									                  
-                                                         return false;
-									                    
-	                                           }else{
-					                  return true;
-							}
-			                }
-			    }
-	            
-	        }
-
-//console.log(solve(4,4,5))
-
-function create(){
-
-	for(let i=0;i<arr.length;i++){
-
-	    for(let j=0;j<arr.length;j++){
-
-	             if(arr[i][j] === 0){
-
-			  for(let n=1;n<10;n++){
-
-			                if(solve(i,j,n)){
-
-							arr[i][j] = n;
-			                                return create();
-
-	                                                 }
-						         else{
-
-			                                  arr[i][j] = 0;
-											                   
-			                                    }
-								               
-					        }
-				        }
-			    }
-        	}
-     
+function sudoku(solve) {
+	    var initObj = {}, tempObj, iter = 81;
+	    while(iter > 0) {
+		 iter = 0;
+		  for(var v = 0; v < solve.length; v++ ){
+			 for(var h = 0; h < solve.length; h++ ){
+					 initObj = {};
+							               
+					 if(solve[v][h] === 0){
+								for(var i = 0; i < 9; i++){
+											 if(solve[v][i] > 0){
+																 initObj[solve[v][i]] = true;
+														 }
+													 if(solve[i][h] > 0){
+																initObj[solve[i][h]] = true;
+													 }
+										 }
+							for(var vBox = Math.floor(v / 3) * 3; vBox <  Math.floor(v / 3) * 3 + 3; vBox++ ){
+								 for(var hBox = Math.floor(h / 3) * 3; hBox <  Math.floor(h / 3) * 3 + 3; hBox++ ){
+												 if(solve[vBox][hBox]){
+														initObj[solve[vBox][hBox]] = true;
+									 }
+						 }
+				 }
+										                   
+						 tempObj = Object.keys(initObj);
+										                   
+								if(tempObj.length === 8){
+										 for(var j = 0; j < 10; j++){
+																	                                
+											 if(tempObj.indexOf(j.toString()) < 0){
+																						                            
+													 solve[v][h] = j;
+													}
+											}
+										 }
+										   else {
+													iter++;
+												}
+									 }
+							                
+							  }
+				            }
+		        }
+	    return initialInput;
 }
 
 
-create(arr);
-    
-console.log(arr);
+var initialInput = [
+	    [0,0,0,2,6,0,7,0,1],
+	    [6,8,0,0,7,0,0,9,0],
+	    [1,9,0,0,0,4,5,0,0],
+	    [8,2,0,1,0,0,0,4,0],
+	    [0,0,4,6,0,2,9,0,0],
+	    [0,5,0,0,0,3,0,2,8],
+	    [0,0,9,3,0,0,0,7,4],
+	    [0,4,0,0,5,0,0,3,6],
+	    [7,0,3,0,1,8,0,0,0]
+	    ];
+
+console.log(sudoku(initialInput));
